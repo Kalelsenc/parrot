@@ -10,3 +10,10 @@
 
 
 # NeuroLay
+ ```
+  NeuroLay<ANeuron>
+  NeuroLay<SNeuron>
+ ```
+ Methods
+ 
+* 
