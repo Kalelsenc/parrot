@@ -39,5 +39,5 @@ double x, y;
 Vector2(double x, double y)
 ```
 
-enum LinkType
+# enum LinkType
 * all-in-all
