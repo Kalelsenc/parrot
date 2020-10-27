@@ -17,3 +17,16 @@
  Methods
  
 * 
+
+# NeuroContainer
+Хранит список NueroLay
+Получает на вход список Точек, возвращает строку/массив с коээфицентами линейной/квадратичной функции
+
+По умолчанию содержит два слоя:
+1) SensorLay
+2) SumLay
+
+### Methods
+
+* setLay<Type>(int size, LinkType)
+* String/Array run(List<Vector2> array)
