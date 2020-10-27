@@ -27,6 +27,16 @@
 2) SumLay
 
 ### Methods
+```
+setLay<Type>(int size, LinkType)
+String/Array run(List<Vector2> array)
+```
 
-* setLay<Type>(int size, LinkType)
-* String/Array run(List<Vector2> array)
+# Vector2
+```
+double x, y;
+Vector2(double x, double y)
+```
+
+enum LinkType
+* all-in-all
