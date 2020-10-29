@@ -10,6 +10,8 @@ namespace ParrotProject
     {
         static void Main(string[] args)
         {
+            NeuroLay<ANeuron> neuroLay = new NeuroLay<ANeuron>();
+            //neuroLay.set()
         }
     }
 }
