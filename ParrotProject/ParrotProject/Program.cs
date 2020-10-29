@@ -13,10 +13,16 @@ namespace ParrotProject
             NeuroContainer container = new NeuroContainer();
 
 
-            NeuroLay lay = new NeuroLay( x => {
+            NeuroLay lay = new NeuroLay(x =>
+            {
                 return (int)x[0] - 2.0;
-            } );
-            container.add(lay, 1);
+            });
+            container.add(lay, 0);
+            lay.add();
+
+            MainWindow main = new MainWindow();
+            main.ShowDialog();
+            Console.ReadLine();
         }
     }
 }
