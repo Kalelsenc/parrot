@@ -8,10 +8,10 @@ namespace ParrotProject
 {
     class Vector2
     {
-        double x, y;
+        public readonly double x, y;
         public Vector2(double x, double y)
         {
-            thix.x = x;
+            this.x = x;
             this.y = y;
         }
     }

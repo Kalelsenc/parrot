@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ParrotProject
 {
-    class LinkType
+    enum LinkType
     {
+        all_to_all
     }
 }
