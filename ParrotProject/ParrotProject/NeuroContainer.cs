@@ -8,21 +8,21 @@ namespace ParrotProject
 {
     class NeuroContainer
     {
-        List<object> list;
+        List<NeuroLay> list;
 
         public NeuroContainer()
         {
-            list = new List<object>();
+            list = new List<NeuroLay>();
         }
 
-        public void setLay<Type>(int size, LinkType linkType)
+        public void add(NeuroLay lay, int pos)
         {
-           // list.Add(new NeuroLay<Type>(size, linkType));
+            list.Insert(pos, lay);
         }
 
         public string run(List<Vector2> points)
         {
-            return "";
+
         }
     }
 }

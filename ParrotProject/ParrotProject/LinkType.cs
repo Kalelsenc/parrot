@@ -8,6 +8,7 @@ namespace ParrotProject
 {
     enum LinkType
     {
-        all_to_all
+        all_to_all,
+        custom
     }
 }

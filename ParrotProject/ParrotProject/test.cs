@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PigeonProject
+namespace ParrotProject
 {
-    interface INeuron<T, E>
+    interface test
     {
-        void push(T value);
-        E get();
-
-        void clear();
+        string get();
     }
 }

@@ -10,6 +10,13 @@ namespace ParrotProject
     {
         static void Main(string[] args)
         {
+            NeuroContainer container = new NeuroContainer();
+
+
+            NeuroLay lay = new NeuroLay( x => {
+                return (int)x[0] - 2.0;
+            } );
+            container.add(lay, 1);
         }
     }
 }
