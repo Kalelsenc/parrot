@@ -9,9 +9,9 @@ namespace ParrotProject
     class Synaps
     {
         
-        readonly int fromId;
-        readonly int toId;
-        double weight;
+        public readonly int fromId;
+        public readonly int toId;
+        public Double weight = Double.NaN;
 
         Synaps(int from, int to, double w)
         {

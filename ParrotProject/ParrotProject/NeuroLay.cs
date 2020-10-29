@@ -1,9 +1,8 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,15 +37,25 @@ namespace ParrotProject
             synapses.Add(syn);
         }
 
-        public Lookup<int, object> call()
+        object call(int i, List< object> value)
         {
-            //Lookup<int, object> groupings = (Lookup<int, object>)neurons.ToLookup(x=> x.)
-            return null;
+            var groupings = 
+
+            return (Lookup<int, object>)groupings.ToLookup(x=>x.id, x=>x.value);
         }
 
-        public void descent(List<NeuroLay> list, int id)
+        public Lookup<int, object> descent(List<NeuroLay> list, int id)
         {
+            if(id>0)
+            {
+                Lookup<int, object> values = list[id - 1].descent(list, id - 1);
 
+                var current =  from n in neurons select new { id = neurons.IndexOf(n), value = n.get(values[neurons.IndexOf(n)].ToList()) };
+
+                var descentReturn = from s in synapses join c in current on s.fromId equals c.id select new { id = s.toId, value = s.weight != Double.NaN ? (double)c.value * s.weight : c.value };
+                return (Lookup<int, object>)descentReturn;
+            }
+            return  (Lookup<int, object>) from n in neurons select new { id = neurons.IndexOf(n), value = n.get() };
         }
     }
 }
