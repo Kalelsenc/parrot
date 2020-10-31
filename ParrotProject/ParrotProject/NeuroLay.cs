@@ -1,8 +1,8 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,15 +38,15 @@ namespace ParrotProject
             synapses.Add(syn);
         }
 
-        public Lookup<int, object> call()
+        public Lookup<int, object> calculate(List<NeuroLay>.Enumerator enumerator, Lookup<int, object> groupings )
         {
-            //Lookup<int, object> groupings = (Lookup<int, object>)neurons.ToLookup(x=> x.)
-            return null;
-        }
+            var neuronsOutput = from n in neurons select new { id = neurons.IndexOf(n), value = n.get(groupings[neurons.IndexOf(n)].ToList()) };
+            var returnValues = from s in synapses join c in neuronsOutput on s.fromId equals c.id select new { id = s.toId, value = s.weight != Double.NaN ? (double)c.value * s.weight : c.value };
+            var lookupList = (Lookup<int, object>)returnValues.ToLookup(p => p.id, p => p.value);
 
-        public void descent(List<NeuroLay> list, int id)
-        {
-
+            if (enumerator.MoveNext())
+                return enumerator.Current.calculate(enumerator, lookupList);
+            else return lookupList;
         }
     }
 }

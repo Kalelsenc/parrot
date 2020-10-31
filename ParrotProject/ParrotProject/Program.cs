@@ -8,10 +8,10 @@ namespace ParrotProject
 {
     class Program
     {
+      
         static void Main(string[] args)
         {
             NeuroContainer container = new NeuroContainer();
-
 
             NeuroLay lay = new NeuroLay(x =>
             {
@@ -23,6 +23,7 @@ namespace ParrotProject
             MainWindow main = new MainWindow();
             main.ShowDialog();
             Console.ReadLine();
+
         }
     }
 }
