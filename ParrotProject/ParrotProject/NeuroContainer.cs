@@ -26,9 +26,11 @@ namespace ParrotProject
             list.Insert(pos, lay);
         }
 
-        public string run(List<Vector2> points)
+        public Lookup<int, object> run(Lookup<int, object> groupings)
         {
-            return "";
+            if (list.Count > 0)
+                return list[0].calculate(list.GetEnumerator(), groupings);
+            else throw new Exception("Lay count = 0");
         }
         
         public void Save()
