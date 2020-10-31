@@ -8,14 +8,17 @@ namespace ParrotProject
 {
     class Program
     {
+      
         static void Main(string[] args)
         {
             NeuroContainer container = new NeuroContainer();
 
-
             NeuroLay lay = new NeuroLay( x => {
                 return (int)x[0] - 2.0;
             } );
+
+            lay.add();
+
             container.add(lay, 1);
         }
     }
