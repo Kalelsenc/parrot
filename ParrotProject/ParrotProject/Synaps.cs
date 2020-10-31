@@ -13,7 +13,7 @@ namespace ParrotProject
         public readonly int toId;
         public Double weight = Double.NaN;
 
-        Synaps(int from, int to, double w)
+        public Synaps(int from, int to, double w)
         {
             fromId = from;
             toId = to;
