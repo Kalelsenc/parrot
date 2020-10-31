@@ -28,6 +28,11 @@ namespace ParrotProject
             neurons.Add(new Neuron<List<object>, object>(action));
         }
 
+        public int count()
+        {
+            return neurons.Count();
+        }
+
         public void setSynapsis(NeuroLay nextLay, LinkType type)
         {
             linkType = type;
@@ -52,6 +57,26 @@ namespace ParrotProject
             if (enumerator.MoveNext())
                 return enumerator.Current.calculate(enumerator, lookupList);
             else return lookupList;
+        }
+
+        public void setLinkType(LinkType type, NeuroLay next)
+        {
+            Random random = new Random();
+            switch (type)
+            {
+                case LinkType.all_to_all:
+                    int n = neurons.Count();
+                    int m = next.count();
+                    for (int i=0;i<n;i++)
+                    {
+                        for (int j=0;j<m;j++)
+                        {
+                            Synaps synaps = new Synaps(i, j, random.NextDouble());
+                        }
+                    }
+                    break;
+            }
+
         }
     }
 }
