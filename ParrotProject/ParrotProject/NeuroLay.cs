@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Security.Cryptography;
+
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ParrotProject
 {
+    [Serializable]
     class NeuroLay
     {
         List<Neuron<List<object>, object>> neurons = new List<Neuron<List<object>, object>>();
@@ -27,6 +28,11 @@ namespace ParrotProject
             neurons.Add(new Neuron<List<object>, object>(action));
         }
 
+        public int count()
+        {
+            return neurons.Count();
+        }
+
         public void setSynapsis(NeuroLay nextLay, LinkType type)
         {
             linkType = type;
@@ -39,6 +45,11 @@ namespace ParrotProject
 
         public Lookup<int, object> calculate(List<NeuroLay>.Enumerator enumerator, Lookup<int, object> groupings )
         {
+            if (synapses.Count < 1)
+                throw new Exception("Synapsis count is 0");
+            if (neurons.Count < 1)
+                throw new Exception("Neuron count is 0");
+
             var neuronsOutput = from n in neurons select new { id = neurons.IndexOf(n), value = n.get(groupings[neurons.IndexOf(n)].ToList()) };
             var returnValues = from s in synapses join c in neuronsOutput on s.fromId equals c.id select new { id = s.toId, value = s.weight != Double.NaN ? (double)c.value * s.weight : c.value };
             var lookupList = (Lookup<int, object>)returnValues.ToLookup(p => p.id, p => p.value);
