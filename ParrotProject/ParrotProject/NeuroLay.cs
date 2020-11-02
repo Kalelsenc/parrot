@@ -65,18 +65,13 @@ namespace ParrotProject
             switch (type)
             {
                 case LinkType.all_to_all:
-                    int n = neurons.Count();
-                    int m = next.count();
-                    for (int i=0;i<n;i++)
-                    {
-                        for (int j=0;j<m;j++)
-                        {
-                            Synaps synaps = new Synaps(i, j, random.NextDouble());
-                        }
-                    }
-                    break;
+                    for (int i = 0; i < neurons.Count(); i++)
+                        for (int j = 0; j < next.count(); j++)
+                            setSynaps(new Synaps(i, j, random.NextDouble()));
+                break;
             }
 
         }
+
     }
 }
