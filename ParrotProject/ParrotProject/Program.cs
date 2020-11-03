@@ -32,18 +32,11 @@ namespace ParrotProject
 
             NeuroOutputLay secondLay = new NeuroOutputLay(x =>
             {
-                double average = 0;
-                for (int i = 0; i < x.Count; i++)
-                    average += Convert.ToDouble(x[i]);
-                average /= x.Count;
-
-                int biggerThenAverage = 0;
-
-                for (int i = 0; i < x.Count; i++)
-                    if (Convert.ToDouble(x[i]) > average)
-                        biggerThenAverage++;
-
-                return biggerThenAverage > x.Count/2;
+                Vector2 p1 =(Vector2)x[0];
+                Vector2 p2 = (Vector2)x[1];
+                double k = (p2.y - p1.y) / (p2.x - p1.x);
+                double c = p1.x * (p2.y - p1.y) / (p2.x - p1.x) + p1.y;
+                return "x * " + k + " + " + c;
             });
             secondLay.add();
 
@@ -52,7 +45,7 @@ namespace ParrotProject
 
             firstLay.setLinkType(LinkType.all_to_all, secondLay, false);
 
-            object[] list = { 1.0, 3.0, 4.0 };
+            object[] list = { new Vector2(0,2),new Vector2(-0.667,0) };
             NeuroMessage message = new NeuroMessage(1);
             message.add(0, list);
 
