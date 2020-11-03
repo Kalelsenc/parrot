@@ -7,6 +7,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 using System.Threading;
+using ParrotProject.NeuroLays;
 
 namespace ParrotProject
 {
@@ -26,13 +27,13 @@ namespace ParrotProject
             list.Insert(pos, lay);
         }
 
-        public Lookup<int, object> run(Lookup<int, object> groupings)
+        public NeuroMessage run(NeuroMessage message)
         {
             if (list.Count > 0)
-                return list[0].calculate(list.GetEnumerator(), groupings);
+                return list[0].calculate(list.GetEnumerator(), message);
             else throw new Exception("Lay count = 0");
         }
-        
+
         public void Save()
         {
                 BinaryFormatter formatter = new BinaryFormatter();
