@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,6 +41,15 @@ namespace ParrotProject
                 res += "\n";
             }
             return res;
+        }
+
+        public static NeuroMessage parseBitmap(Bitmap p)
+        {
+            NeuroMessage message = new NeuroMessage(p.Height);
+            for (int i = 0; i < p.Height; i++)
+                for (int j = 0; j < p.Width; j++)
+                    message.add(i, p.GetPixel(j, i));
+            return message;
         }
     }
 }

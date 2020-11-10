@@ -50,21 +50,22 @@ namespace ParrotProject.NeuroLays
             if (neurons.Count < 1)
                 throw new Exception("Neuron count is 0");
 
-            var neuronsOutput = from n in neurons select new { id = neurons.IndexOf(n), value = n.get(message.get(neurons.IndexOf(n)))};
-            var returnValues = from s in synapses join c in neuronsOutput on s.fromId 
-                               equals c.id select new { id = s.toId, value = s.weight != Double.NaN ? c.value : Convert.ToDouble(c.value) * s.weight };
+            List<object> neuronsOutput = new List<object>();
 
+            for (int i = 0; i < neurons.Count; i++)
+                neuronsOutput.Add(neurons[i].get(message.get(i)));
+       
             NeuroMessage nextLayMessage = new NeuroMessage(neurons.Count);
 
-            foreach (var a in returnValues)
-                nextLayMessage.add(a.id, a.value);
+            foreach(Synaps s in synapses)
+                nextLayMessage.add(s.toId, s.weight != Double.NaN ? neuronsOutput[s.fromId] : Convert.ToDouble(neuronsOutput[s.fromId]) * s.weight);
 
             if (enumerator.MoveNext())
                 return enumerator.Current.calculate(enumerator, nextLayMessage);
             else return nextLayMessage;
         }
 
-        public void setLinkType(LinkType type, NeuroLay next, bool randomWeight)
+        public void setLinkTypeAndRandomWeight(LinkType type, NeuroLay next, bool randomWeight)
         {
             Random random = new Random();
             switch (type)
