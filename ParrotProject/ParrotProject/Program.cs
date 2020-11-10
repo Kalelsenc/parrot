@@ -14,20 +14,11 @@ namespace ParrotProject
         {
             NeuroContainer container = new NeuroContainer();
 
-
-            //NeuroLay lay = new NeuroLay(x =>
-            //{
-            //    return (int)x[0] - 2.0;
-            //});
-
-            //container.add(lay, 0);
-            //lay.add();
-
-
             NeuroLay firstLay = new NeuroLay(x =>
             {
                 return x;
             });
+
             firstLay.add();
 
             NeuroOutputLay secondLay = new NeuroOutputLay(x =>
@@ -38,12 +29,15 @@ namespace ParrotProject
                 double c = p1.x * (p2.y - p1.y) / (p2.x - p1.x) + p1.y;
                 return "x * " + k + " + " + c;
             });
+
             secondLay.add();
 
-            container.add(firstLay, 0);
-            container.add(secondLay, 1);
+            container.add(firstLay, secondLay);
 
-            firstLay.setLinkType(LinkType.all_to_all, secondLay, false);
+            //container.add(firstLay, 0);
+            //container.add(secondLay, 1);
+
+            firstLay.setLinkTypeAndRandomWeight(LinkType.all_to_all, secondLay, false);
 
             object[] list = { new Vector2(0,2),new Vector2(-0.667,0) };
             NeuroMessage message = new NeuroMessage(1);
@@ -51,14 +45,9 @@ namespace ParrotProject
 
             Console.WriteLine("" + container.run(message).ToString());
 
-
-            //container.add(lay, 1);
-
             MainWindow main = new MainWindow();
             main.ShowDialog();
             Console.ReadLine();
-
-
         }
     }
 }

@@ -72,10 +72,7 @@ namespace ParrotProject.NeuroLays
                 case LinkType.all_to_all:
                     for (int i = 0; i < neurons.Count(); i++)
                         for (int j = 0; j < next.count(); j++)
-                            if(randomWeight)
-                                setSynaps(new Synaps(i, j, random.NextDouble()));
-                            else
-                                setSynaps(new Synaps(i, j, Double.NaN));
+                            setSynaps(new Synaps(i, j, randomWeight ?  random.NextDouble() : Double.NaN));
                     break;
             }
 

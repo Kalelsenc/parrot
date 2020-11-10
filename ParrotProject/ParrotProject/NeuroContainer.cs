@@ -22,6 +22,11 @@ namespace ParrotProject
             list = new List<NeuroLay>();
         }
 
+        public void add(params NeuroLay[] lays)
+        {
+            list.AddRange(lays);
+        }
+
         public void add(NeuroLay lay, int pos)
         {
             list.Insert(pos, lay);
