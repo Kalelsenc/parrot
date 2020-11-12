@@ -32,8 +32,7 @@ namespace ParrotProject
         {
             neuroContainer.Load();
         }
-<<<<<<< Updated upstream
-=======
+
 
         private void chart1_Click(object sender, EventArgs e)
         {
@@ -52,6 +51,6 @@ namespace ParrotProject
             mainWindow.ShowDialog();
         }
 
->>>>>>> Stashed changes
+
     }
 }
