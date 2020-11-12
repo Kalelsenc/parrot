@@ -41,6 +41,7 @@ namespace ParrotProject
 
             NeuroMessage message = new NeuroMessage(1);
             message.add(0, list);
+            
 
             Console.WriteLine("" + container.run(message).ToString());
 

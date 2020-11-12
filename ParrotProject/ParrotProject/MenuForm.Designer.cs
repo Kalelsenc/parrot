@@ -30,13 +30,14 @@
         {
             this.Load = new System.Windows.Forms.Button();
             this.Save = new System.Windows.Forms.Button();
-            this.Random = new System.Windows.Forms.Button();
+            this.randomButton = new System.Windows.Forms.Button();
             this.addPoint = new System.Windows.Forms.Button();
             this.textBoxX = new System.Windows.Forms.TextBox();
             this.textBoxY = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Submit = new System.Windows.Forms.Button();
+            this.clearButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Load
@@ -59,19 +60,19 @@
             this.Save.UseVisualStyleBackColor = true;
             this.Save.Click += new System.EventHandler(this.Save_Click);
             // 
-            // Random
+            // randomButton
             // 
-            this.Random.Location = new System.Drawing.Point(94, 77);
-            this.Random.Name = "Random";
-            this.Random.Size = new System.Drawing.Size(75, 23);
-            this.Random.TabIndex = 2;
-            this.Random.Text = "Random";
-            this.Random.UseVisualStyleBackColor = true;
-            this.Random.Click += new System.EventHandler(this.Random_Click);
+            this.randomButton.Location = new System.Drawing.Point(94, 76);
+            this.randomButton.Name = "randomButton";
+            this.randomButton.Size = new System.Drawing.Size(75, 23);
+            this.randomButton.TabIndex = 2;
+            this.randomButton.Text = "Random";
+            this.randomButton.UseVisualStyleBackColor = true;
+            this.randomButton.Click += new System.EventHandler(this.Random_Click);
             // 
             // addPoint
             // 
-            this.addPoint.Location = new System.Drawing.Point(51, 166);
+            this.addPoint.Location = new System.Drawing.Point(52, 190);
             this.addPoint.Name = "addPoint";
             this.addPoint.Size = new System.Drawing.Size(75, 23);
             this.addPoint.TabIndex = 3;
@@ -81,7 +82,7 @@
             // 
             // textBoxX
             // 
-            this.textBoxX.Location = new System.Drawing.Point(77, 140);
+            this.textBoxX.Location = new System.Drawing.Point(78, 164);
             this.textBoxX.Name = "textBoxX";
             this.textBoxX.Size = new System.Drawing.Size(50, 20);
             this.textBoxX.TabIndex = 4;
@@ -90,7 +91,7 @@
             // 
             // textBoxY
             // 
-            this.textBoxY.Location = new System.Drawing.Point(133, 140);
+            this.textBoxY.Location = new System.Drawing.Point(134, 164);
             this.textBoxY.Name = "textBoxY";
             this.textBoxY.Size = new System.Drawing.Size(50, 20);
             this.textBoxY.TabIndex = 5;
@@ -99,7 +100,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(100, 124);
+            this.label1.Location = new System.Drawing.Point(101, 148);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 6;
@@ -108,7 +109,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 203);
+            this.label2.Location = new System.Drawing.Point(13, 227);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(13, 13);
             this.label2.TabIndex = 7;
@@ -117,7 +118,7 @@
             // Submit
             // 
             this.Submit.Enabled = false;
-            this.Submit.Location = new System.Drawing.Point(133, 166);
+            this.Submit.Location = new System.Drawing.Point(134, 190);
             this.Submit.Name = "Submit";
             this.Submit.Size = new System.Drawing.Size(75, 23);
             this.Submit.TabIndex = 8;
@@ -125,18 +126,29 @@
             this.Submit.UseVisualStyleBackColor = true;
             this.Submit.Click += new System.EventHandler(this.Submit_Click);
             // 
+            // clearButton
+            // 
+            this.clearButton.Location = new System.Drawing.Point(94, 105);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(75, 23);
+            this.clearButton.TabIndex = 9;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(272, 316);
+            this.Controls.Add(this.clearButton);
             this.Controls.Add(this.Submit);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxY);
             this.Controls.Add(this.textBoxX);
             this.Controls.Add(this.addPoint);
-            this.Controls.Add(this.Random);
+            this.Controls.Add(this.randomButton);
             this.Controls.Add(this.Save);
             this.Controls.Add(this.Load);
             this.Name = "MenuForm";
@@ -150,12 +162,13 @@
 
         private System.Windows.Forms.Button Load;
         private System.Windows.Forms.Button Save;
-        private System.Windows.Forms.Button Random;
+        private System.Windows.Forms.Button randomButton;
         private System.Windows.Forms.Button addPoint;
         private System.Windows.Forms.TextBox textBoxX;
         private System.Windows.Forms.TextBox textBoxY;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Submit;
+        private System.Windows.Forms.Button clearButton;
     }
 }
