@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Reflection;
 
@@ -11,26 +12,23 @@ namespace ParrotProject.NeuroLays
     [Serializable]
     class NeuroLay
     {
-        protected List<Neuron<List<object>, object>> neurons = new List<Neuron<List<object>, object>>();
         protected List<Synaps> synapses = new List<Synaps>();
 
         protected LinkType linkType = LinkType.custom;
 
         protected readonly Func<List<object>, object> action;
 
-        public NeuroLay(Func<List<object>, object> action)
+        protected readonly int size;
+
+        public NeuroLay(Func<List<object>, object> action, int size)
         {
             this.action = action;
-        }
-
-        public void add()
-        {
-            neurons.Add(new Neuron<List<object>, object>(action));
+            this.size = size;
         }
 
         public int count()
         {
-            return neurons.Count();
+            return size;
         }
 
         public void setSynapsis(NeuroLay nextLay, LinkType type)
@@ -47,15 +45,15 @@ namespace ParrotProject.NeuroLays
         {
             if (synapses.Count < 1)
                 throw new Exception("Synapsis count is 0");
-            if (neurons.Count < 1)
-                throw new Exception("Neuron count is 0");
+            if(message.count != size)
+                throw new Exception("message size and NeuroLay size not equal");
 
             List<object> neuronsOutput = new List<object>();
 
-            for (int i = 0; i < neurons.Count; i++)
-                neuronsOutput.Add(neurons[i].get(message.get(i)));
+            for (int i = 0; i < message.count; i++)
+                neuronsOutput.Add(action(message.get(i)));
        
-            NeuroMessage nextLayMessage = new NeuroMessage(neurons.Count);
+            NeuroMessage nextLayMessage = new NeuroMessage(neuronsOutput.Count);
 
             foreach(Synaps s in synapses)
                 nextLayMessage.add(s.toId, s.weight != Double.NaN ? neuronsOutput[s.fromId] : Convert.ToDouble(neuronsOutput[s.fromId]) * s.weight);
@@ -71,7 +69,7 @@ namespace ParrotProject.NeuroLays
             switch (type)
             {
                 case LinkType.all_to_all:
-                    for (int i = 0; i < neurons.Count(); i++)
+                    for (int i = 0; i < size; i++)
                         for (int j = 0; j < next.count(); j++)
                             setSynaps(new Synaps(i, j, randomWeight ?  random.NextDouble() : Double.NaN));
                     break;

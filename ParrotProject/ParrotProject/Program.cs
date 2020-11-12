@@ -17,9 +17,7 @@ namespace ParrotProject
             NeuroLay firstLay = new NeuroLay(x =>
             {
                 return x;
-            });
-
-            firstLay.add();
+            }, 1);
 
             NeuroOutputLay secondLay = new NeuroOutputLay(x =>
             {
@@ -28,10 +26,8 @@ namespace ParrotProject
                 double k = (p2.y - p1.y) / (p2.x - p1.x);
                 double c = p1.x * (p2.y - p1.y) / (p2.x - p1.x) + p1.y;
                 return "x * " + k + " + " + c;
-            });
+            }, 1 );
 
-
-            secondLay.add();
 
             container.add(firstLay, secondLay);
 

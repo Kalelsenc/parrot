@@ -10,7 +10,10 @@ namespace ParrotProject
     class NeuroMessage
     {
         List<List<object>> messageData = new List<List<object>>();
-
+        public int count
+        {
+            get { return messageData.Count; }
+        }
         public NeuroMessage(int neuroCount)
         {
             for(int i = 0; i < neuroCount; i++)
