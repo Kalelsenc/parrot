@@ -39,7 +39,7 @@ namespace ParrotProject
 
             object[] list = { new Vector2(0,2),new Vector2(-0.667,0) };
 
-            NeuroMessage message = new NeuroMessage(1);
+            Matrix message = new Matrix(1);
             message.add(0, list);
             
 

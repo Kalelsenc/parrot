@@ -41,7 +41,8 @@ namespace ParrotProject.NeuroLays
             synapses.Add(syn);
         }
 
-        public virtual NeuroMessage calculate(List<NeuroLay>.Enumerator enumerator, NeuroMessage message )
+
+        public virtual Matrix calculate(List<NeuroLay>.Enumerator enumerator, Matrix message )
         {
             if (synapses.Count < 1)
                 throw new Exception("Synapsis count is 0");
@@ -52,8 +53,8 @@ namespace ParrotProject.NeuroLays
 
             for (int i = 0; i < message.count; i++)
                 neuronsOutput.Add(action(message.get(i)));
-       
-            NeuroMessage nextLayMessage = new NeuroMessage(neuronsOutput.Count);
+
+            Matrix nextLayMessage = new Matrix(neuronsOutput.Count);
 
             foreach(Synaps s in synapses)
                 nextLayMessage.add(s.toId, s.weight != Double.NaN ? neuronsOutput[s.fromId] : Convert.ToDouble(neuronsOutput[s.fromId]) * s.weight);

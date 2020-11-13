@@ -32,7 +32,7 @@ namespace ParrotProject
             list.Insert(pos, lay);
         }
 
-        public NeuroMessage run(NeuroMessage message)
+        public Matrix run(Matrix message)
         {
             if (list.Count > 0)
                 return list[0].calculate(list.GetEnumerator(), message);

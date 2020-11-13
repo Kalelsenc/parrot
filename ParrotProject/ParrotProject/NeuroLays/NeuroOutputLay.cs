@@ -12,12 +12,12 @@ namespace ParrotProject.NeuroLays
         {
         }
 
-        public override NeuroMessage calculate(List<NeuroLay>.Enumerator enumerator, NeuroMessage message)
+        public override Matrix calculate(List<NeuroLay>.Enumerator enumerator, Matrix message)
         {
             if (size < 1)
                 throw new Exception("Neuron count is 0");
 
-            NeuroMessage neuroMessage = new NeuroMessage(message.count);
+            Matrix neuroMessage = new Matrix(message.count);
             for (int i = 0; i < message.count; i++)
                 neuroMessage.add(i, action(message.get(i)));
 

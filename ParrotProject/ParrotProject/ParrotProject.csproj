@@ -62,7 +62,6 @@
       <DependentUpon>MenuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="NeuroLays\NeuroOutputLay.cs" />
-    <Compile Include="NeuroMessage.cs" />
     <Compile Include="Neuron.cs" />
     <Compile Include="LinkType.cs" />
     <Compile Include="NeuroContainer.cs" />
@@ -70,7 +69,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Synaps.cs" />
-    <Compile Include="test.cs" />
     <Compile Include="Vector2.cs" />
   </ItemGroup>
   <ItemGroup>
