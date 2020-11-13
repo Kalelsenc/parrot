@@ -38,24 +38,5 @@ namespace ParrotProject
                 return list[0].calculate(list.GetEnumerator(), message);
             else throw new Exception("Lay count = 0");
         }
-
-        public void Save()
-        {
-                BinaryFormatter formatter = new BinaryFormatter();
-                using (FileStream fs = new FileStream("list.dat", FileMode.OpenOrCreate))
-                    formatter.Serialize(fs, list);
-        }
-
-        
-        public void Load()
-        {
-            BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream fs = new FileStream("list.dat", FileMode.OpenOrCreate))
-            {
-                    List<NeuroLay> neuroLays = (List<NeuroLay>)formatter.Deserialize(fs);
-                    list = neuroLays;
-            }
-
-        }
     }
 }

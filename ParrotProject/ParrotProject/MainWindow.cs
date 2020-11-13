@@ -24,13 +24,12 @@ namespace ParrotProject
 
         private void Save_Click(object sender, EventArgs e)
         {
-            neuroContainer.Save();
-            
+            Data.save(neuroContainer, "file.bin"); 
         }
 
         private void loadFile_Click(object sender, EventArgs e)
         {
-            neuroContainer.Load();
+            neuroContainer = Data.load<NeuroContainer>("file.bin");
         }
 
 
